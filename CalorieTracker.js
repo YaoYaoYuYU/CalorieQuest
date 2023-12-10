@@ -7,66 +7,73 @@ document.getElementById('food').addEventListener('keydown', function(event) {
     }
 });
 
+let currentList = 1;
+
 function addFood(event) {
-    event.preventDefault();
-    const query = document.getElementById("food").value;
-    const capitalizedQuery = capitalizeFirstLetter(query);
-    console.log(capitalizedQuery);
+    event.preventDefault()
+    let food = document.getElementById('food').value;
+    food = capitalizeFirstLetter(food);
+    if (food) {
+        fetchNutritionInfo(food, currentList, food);
 
-    fetchNutritionInfo(capitalizedQuery, capitalizedQuery);
+        document.getElementById('listOfFood' + currentList).classList.add('hasContent');
+
+        currentList = (currentList % 10) + 1; 
+    }
+    document.getElementById('food').value = '';
 }
-
+    
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function appendToList(listId, text) {
+function appendToList(result, listId) {
     const li = document.createElement("li");
-    li.textContent = text;
-    document.getElementById(listId).appendChild(li);
+    li.textContent = result;
+    document.getElementById('listOfFood' + listId).appendChild(li);
 }
 
-function fetchNutritionInfo(query, foodName) {
+function fetchNutritionInfo(query, listId, foodName) {
     $.ajax({
         method: 'GET',
         url: 'https://api.api-ninjas.com/v1/nutrition?query=' + query,
         headers: { 'X-Api-Key': apiKey },
         contentType: 'application/json',
         success: function(result) {
-            appendToList("listOfFood", foodName);
-            handleApiResponse(result);
+            handleApiResponse(result, listId, foodName);
         },
-        error: function(jqXHR) {
-            console.error('Error: ', jqXHR.responseText);
-        }
     });
 }
-
-function handleApiResponse(result) {
+function handleApiResponse(result, listId, foodName) {
     console.log(result);
+    appendToList(foodName, listId); 
     const calories = result[0].calories;
-    appendToList("listOfFood", "Calories: " + calories);
+    appendToList("Calories: " + calories, listId);
 
     const protein = result[0].protein_g;
-    appendToList("listOfFood", "Protein: " + protein + " grams");
+    appendToList("Protein: " + protein + " grams", listId);
 
     const totalFat = result[0].fat_total_g;
-    appendToList("listOfFood", "Total Fat: " + totalFat + " g");
+    appendToList("Total Fat: " + totalFat + " g", listId);
 
     const totalCarbs = result[0].carbohydrates_total_g;
-    appendToList("listOfFood", "Total Carbs: " + totalCarbs + " g");
+    appendToList("Total Carbs: " + totalCarbs + " g", listId);
 
     const servingSize = result[0].serving_size_g;
+    appendToList("Serving Size: " + servingSize + " g", listId);
 
     const fiber = result[0].fiber_g;
-    appendToList("listOfFood", "Fiber: " + fiber + " g");
+    appendToList("Fiber: " + fiber + " g", listId);
 
     const sugar = result[0].sugar_g;
-    appendToList("listOfFood", "Sugar: " + sugar + " g");
+    appendToList("Sugar: " + sugar + " g", listId);
 
     const cholesterol = result[0].cholesterol_mg;
-    appendToList("listOfFood", "Cholesterol: " + cholesterol + " mg");
+    appendToList("Cholesterol: " + cholesterol + " mg", listId);
 
     const sodium = result[0].sodium_mg;
-    appendToList("listOfFood", "Sodium: " + sodium + " mg");
+    appendToList("Sodium: " + sodium + " mg", listId);
+
+    document.getElementById('listOfFood' + listId).classList.add('hasContent');
+
 }
