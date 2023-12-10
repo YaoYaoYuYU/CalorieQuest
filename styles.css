@@ -6,8 +6,11 @@ body {
     height: 100vh;
     margin: 0;
     padding-top: 5%; 
-    background-color:#000033;
-
+    background: rgb(8,3,83);
+    background: -moz-linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
+    background: -webkit-linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
+    background: linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#080353",endColorstr="#3c07b9",GradientType=1);
 }
 
 #inputFood {
@@ -18,33 +21,199 @@ body {
     align-items: center;
     padding: 10px;
     border-radius: 10px;
+    
 }
 
 #add {
     width: 100px;
     box-sizing: border-box;
     color:white;
-    background-color: lightgray;
+    background-color: rgb(5, 61, 125);
     border-radius:10px;
+    border:1px solid rgb(5, 61, 125);
 }
 
-#add 
+#add:active {
+    background-color: rgb(2, 33, 69);
 
-#macrosContainer1{
+}
+
+#food {
+    border-radius:10px;
+    border:1px solid rgb(5, 61, 125);
+}
+
+#listContainer {
+    display: flex;
+}
+
+#macrosContainer1, #macrosContainer2, #macrosContainer3, #macrosContainer4
+, #macrosContainer5, #macrosContainer6, #macrosContainer7 {
     display: flex;
     flex-direction: column;
+    margin-top:150px;
 }
 
-#listOfFood{
+#listOfFood1, #listOfFood2, #listOfFood3, #listOfFood4, #listOfFood5, #listOfFood6, #listOfFood7 {
+    display:none;
+}
+
+#listOfFood1.hasContent, #listOfFood2.hasContent, #listOfFood3.hasContent, #listOfFood4.hasContent
+, #listOfFood5.hasContent, #listOfFood6.hasContent, #listOfFood7.hasContent {
+    display:block;
     list-style-type: none;
-    color: rgb(129, 99, 99);
+    color: black;
+    height: auto;
+    width: 175px;
+    font-size:20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding:0;
+    margin:10px;
+}    
 
+.snowflake {
+    color: #fff;
+    font-size: 1em;
+    font-family: Arial;
+    text-shadow: 0 0 1px #de2a2a;
+  }
+
+@-webkit-keyframes snowflakes-fall {
+    0% {
+      top: -10%;
+    }
+    100% {
+      top: 100%;
+    }
+}
+  
+@-webkit-keyframes snowflakes-shake {
+    0%, 100% {
+      -webkit-transform: translateX(0px);
+      transform: translateX(0px);
+    }
+    50% {
+      -webkit-transform: translateX(80px);
+      transform: translateX(80px);
+    }
+}
+  
+@keyframes snowflakes-fall {
+    0% {
+      top: -10%;
+    }
+    100% {
+      top: 100%;
+    }
+}
+  
+@keyframes snowflakes-shake {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(80px);
+    }
+}
+  
+.snowflake {
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+    -webkit-animation-duration: 10s, 3s;
+    -webkit-animation-timing-function: linear, ease-in-out;
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-play-state: running, running;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+  
+.snowflake:nth-of-type(0) {
+    left: 1%;
+    -webkit-animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
 }
 
-#food{
-    border-radius:10px;
+.snowflake:nth-of-type(1) {
+    left: 10%;
+    -webkit-animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s;
+    -webkit-animation-duration: 10s, 3s;
+    animation-duration: 10s, 3s;
+    -webkit-animation-iteration-count: infinite, infinite;
+    animation-iteration-count: infinite, infinite;
 }
 
+.snowflake:nth-of-type(2) {
+    left: 20%;
+    -webkit-animation-delay: 6s, 2s;
+    animation-delay: 6s, 2s;
+}
 
+.snowflake:nth-of-type(3) {
+    left: 30%;
+    -webkit-animation-delay: 4s, 4s;
+    animation-delay: 4s, 4s;
+    -webkit-animation-duration: 12s, 6s;
+    animation-duration: 12s, 6s;
+}
 
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    -webkit-animation-delay: 2s, 8s;
+    animation-delay: 2s, 8s;
+}
 
+.snowflake:nth-of-type(5) {
+    left: 50%;
+    -webkit-animation-delay: 8s, 2s;
+    animation-delay: 8s, 2s;
+    -webkit-animation-duration: 10s, 3s;
+    animation-duration: 10s, 3s;
+}
+
+.snowflake:nth-of-type(6) {
+    left: 60%;
+    -webkit-animation-delay: 6s, 6s;
+    animation-delay: 6s, 6s;
+}
+
+.snowflake:nth-of-type(7) {
+    left: 70%;
+    -webkit-animation-delay: 2s, 4s;
+    animation-delay: 2s, 4s;
+    -webkit-animation-duration: 12s, 6s;
+    animation-duration: 12s, 6s;
+}
+
+.snowflake:nth-of-type(8) {
+    left: 80%;
+    -webkit-animation-delay: 4s, 8s;
+    animation-delay: 4s, 8s;
+}
+
+.snowflake:nth-of-type(9) {
+    left: 90%;
+    -webkit-animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
+    -webkit-animation-duration: 10s, 3s;
+    animation-duration: 10s, 3s;
+    -webkit-animation-iteration-count: infinite, infinite;
+    animation-iteration-count: infinite, infinite;
+}
+
+.snowflake:nth-of-type(10) {
+    left: 80%;
+    -webkit-animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s;
+}
