@@ -62,7 +62,7 @@ body {
 , #listOfFood5.hasContent, #listOfFood6.hasContent, #listOfFood7.hasContent {
     display:block;
     list-style-type: none;
-    color: black;
+    color: white;
     height: auto;
     width: 175px;
     font-size:20px;
@@ -71,6 +71,8 @@ body {
     padding:0;
     margin:10px;
 }    
+
+
 
 .snowflake {
     color: #fff;
@@ -216,4 +218,13 @@ body {
     left: 80%;
     -webkit-animation-delay: 1s, 1s;
     animation-delay: 1s, 1s;
+}
+
+#reset{
+    width: 100px;
+    box-sizing: border-box;
+    color:white;
+    background-color: rgb(5, 61, 125);
+    border-radius:10px;
+    border:1px solid rgb(5, 61, 125);
 }
