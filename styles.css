@@ -6,21 +6,77 @@ body {
     height: 100vh;
     margin: 0;
     padding-top: 5%; 
-    background: rgb(8,3,83);
-    background: -moz-linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
-    background: -webkit-linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
-    background: linear-gradient(193deg, rgba(8,3,83,1) 0%, rgba(60,7,185,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#080353",endColorstr="#3c07b9",GradientType=1);
+    background: rgb(135,41,4);
+    background: -moz-linear-gradient(0deg, rgba(135,41,4,1) 0%, rgba(194,80,11,1) 94%);
+    background: -webkit-linear-gradient(0deg, rgba(135,41,4,1) 0%, rgba(194,80,11,1) 94%);
+    background: linear-gradient(0deg, rgba(135,41,4,1) 0%, rgba(194,80,11,1) 94%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#872904",endColorstr="#c2500b",GradientType=1);
 }
 
+@font-face {
+    font-family: myFont;
+    src: url(Rubik-Black.ttf);
+}
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+}
+
+#FoodLogo {
+    width: 50px;  
+    height: auto;
+    margin-right: 1px; 
+    margin-bottom:680px;
+}
+
+#calorieTracker {
+    font-family: myFont;
+    color: white;
+    font-size: 50px;
+    margin-right: 1px;
+    margin-bottom:700px;
+}
+
+#calorieTracker2 {
+    font-family: myFont;
+    color: rgb(142,2,2);
+    font-size: 50px;
+    margin-bottom:700px;
+}
+
+
+#percentChart {
+    position: absolute;
+    top:250px;
+    left: 220px; 
+    transform: translate(-50%, -50%); 
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 300px;   
+    height: 300px;
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+}
 #inputFood {
-    border: 1px solid lightgray;
+    border: 1px solid white;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 10px;
     border-radius: 10px;
+    position:absolute;
+    top:250px;
+
     
 }
 
@@ -28,19 +84,24 @@ body {
     width: 100px;
     box-sizing: border-box;
     color:white;
-    background-color: rgb(5, 61, 125);
+    background: rgb(148,71,8);
     border-radius:10px;
-    border:1px solid rgb(5, 61, 125);
+    border:1px solid rgb(148,71,8);
 }
 
 #add:active {
-    background-color: rgb(2, 33, 69);
+    background-color: rgb(140, 17, 6);
+
+}
+
+#reset:active {
+    background-color: rgb(140, 17, 6);
 
 }
 
 #food {
     border-radius:10px;
-    border:1px solid rgb(5, 61, 125);
+    border:1px solid rgb(148,71,8);
 }
 
 #listContainer {
@@ -51,11 +112,14 @@ body {
 , #macrosContainer5, #macrosContainer6, #macrosContainer7 {
     display: flex;
     flex-direction: column;
-    margin-top:150px;
+    
 }
 
 #listOfFood1, #listOfFood2, #listOfFood3, #listOfFood4, #listOfFood5, #listOfFood6, #listOfFood7 {
     display:none;
+    position: relative;
+    top: -450px; 
+    margin:5px;
 }
 
 #listOfFood1.hasContent, #listOfFood2.hasContent, #listOfFood3.hasContent, #listOfFood4.hasContent
@@ -69,7 +133,6 @@ body {
     border: 1px solid white;
     border-radius: 10px;
     padding:0;
-    margin:10px;
 }    
 
 
@@ -224,7 +287,21 @@ body {
     width: 100px;
     box-sizing: border-box;
     color:white;
-    background-color: rgb(5, 61, 125);
+    background: rgb(148,71,8);
     border-radius:10px;
-    border:1px solid rgb(5, 61, 125);
+    border:1px solid rgb(148,71,8);
+}
+
+#totalMacrosContainer{
+    display:none;
+}
+
+#totalMacrosContainer{
+    display:flex;
+    border:1px solid white;
+    border-radius:10px;
+    width:850px;
+    height:50px;
+    position:absolute;
+    bottom:25px;
 }
