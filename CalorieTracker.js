@@ -101,3 +101,5 @@ function handleApiResponse(result, listId, foodName) {
     document.getElementById('listOfFood' + listId).classList.add('hasContent');
 
 }
+
+
