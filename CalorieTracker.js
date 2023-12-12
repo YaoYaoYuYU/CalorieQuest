@@ -22,6 +22,30 @@ function addFood(event) {
     }
     document.getElementById('food').value = '';
 }
+
+function resetButton(event){ 
+    event.preventDefault();
+    document.getElementById('listOfFood1').classList.remove('hasContent');
+    document.getElementById('listOfFood2').classList.remove('hasContent');
+    document.getElementById('listOfFood3').classList.remove('hasContent');
+    document.getElementById('listOfFood4').classList.remove('hasContent');
+    document.getElementById('listOfFood5').classList.remove('hasContent');
+    document.getElementById('listOfFood6').classList.remove('hasContent');
+    document.getElementById('listOfFood7').classList.remove('hasContent');
+    document.getElementById('listOfFood8').classList.remove('hasContent');
+    document.getElementById('listOfFood9').classList.remove('hasContent');
+    document.getElementById('listOfFood10').classList.remove('hasContent');
+    document.getElementById('listOfFood1').innerHTML = '';
+    document.getElementById('listOfFood2').innerHTML = '';
+    document.getElementById('listOfFood3').innerHTML = '';
+    document.getElementById('listOfFood4').innerHTML = '';
+    document.getElementById('listOfFood5').innerHTML = '';
+    document.getElementById('listOfFood6').innerHTML = '';
+    document.getElementById('listOfFood7').innerHTML = '';
+    document.getElementById('listOfFood8').innerHTML = '';
+    document.getElementById('listOfFood9').innerHTML = '';
+    document.getElementById('listOfFood10').innerHTML = '';
+}
     
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
