@@ -5,19 +5,26 @@ document.getElementById('food').addEventListener('keydown', function(event) {
         event.preventDefault();
         document.getElementById('add').click();
     }
-});
+}); 
 
 let currentList = 1;
+let totalCalories = 0;
+let totalProtein = 0;
+let totalTotalFat = 0;
+let totalTotalCarbs = 0;
+let totalFiber = 0;
+let totalSugar = 0;
+let totalCholesterol = 0;
+let totalSodium = 0;
 
 function addFood(event) {
     event.preventDefault()
-    let food = document.getElementById('food').value;
+    var food = document.getElementById('food').value;
     food = capitalizeFirstLetter(food);
     if (food) {
         fetchNutritionInfo(food, currentList, food);
 
         document.getElementById('listOfFood' + currentList).classList.add('hasContent');
-
         currentList = (currentList % 10) + 1; 
     }
     document.getElementById('food').value = '';
@@ -68,11 +75,12 @@ function fetchNutritionInfo(query, listId, foodName) {
         },
     });
 }
+
 function handleApiResponse(result, listId, foodName) {
     console.log(result);
     appendToList(foodName, listId); 
     const calories = result[0].calories;
-    appendToList("Calories: " + calories, listId);
+    appendToList("Calories: " + calories, listId); 
 
     const protein = result[0].protein_g;
     appendToList("Protein: " + protein + " grams", listId);
@@ -100,6 +108,24 @@ function handleApiResponse(result, listId, foodName) {
 
     document.getElementById('listOfFood' + listId).classList.add('hasContent');
 
-}
+    totalCalories += Math.round(calories);
+    totalProtein += Math.round(protein);
+    totalTotalFat += Math.round(totalFat);
+    totalTotalCarbs += Math.round(totalCarbs);
+    totalFiber += Math.round(fiber);
+    totalSugar += Math.round(sugar);
+    totalCholesterol += Math.round(cholesterol);
+    totalSodium += Math.round(sodium);
 
+    
+    document.getElementById("totalMacrosContainer").innerHTML = 
+        "Total Calories: " + totalCalories + " | " +
+        "Total Protein: " + totalProtein + " grams | " +
+        "Total Fat: " + totalTotalFat + " grams | " +
+        "Total Carbs: " + totalTotalCarbs + " grams | " +
+        "Total Fiber: " + totalFiber + " grams | " +
+        "Total Sugar: " + totalSugar + " grams | " +
+        "Total Cholesterol: " + totalCholesterol + " milligrams | " +
+        "Total Sodium: " + totalSodium + " milligrams";
+}
 
